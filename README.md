@@ -2,9 +2,9 @@
 
 This example app demonstrates how you might go about setting up a buddybuild project
 
-# the buddybuild_prebuild.sh script
+### the buddybuild_prebuild.sh script
 
-# the buddybuild_postbuild.sh script
+### the buddybuild_postbuild.sh script
 This script will set up our environment in such a way that we can easily upload your build output, as well as run the Java test case.  While we use java, any framework that supported appium can be used.
 
 The key steps this script performs are

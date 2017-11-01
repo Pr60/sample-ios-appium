@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-chruby 2.1.1
+node -v
+npm -v
 
 # install brew, ant, maven
 if ! which brew >/dev/null; then
@@ -18,20 +19,12 @@ if ! which maven >/dev/null; then
 	brew install maven
 fi
 
-# clone appium
-echo "Cloning Appium..."
-cd && \
-git clone git://github.com/appium/appium.git
-
-
-# install appium deps
-echo "Installing Appium dependencies..."
-cd appium
-npm install
-
-# create env var for appium install
-export APPIUM_HOME=pwd
+# install appium
+npm install -g appium
 
 # authorize for testing
 npm install -g authorize-ios
 authorize-ios
+
+# install rubygems
+bundle install
