@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+chruby 2.4.1
+
+ruby -v
 node -v
 npm -v
 
