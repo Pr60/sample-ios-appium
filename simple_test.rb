@@ -7,7 +7,7 @@ desired_caps = {
   caps: {
     platformName:  'iOS',
     platformVersion: '11.0',
-    deviceName:    'iPhone 8',
+    deviceName:    'iPhone 7',
     app:           app_path,
     automationName: 'XCUITest',
   },
