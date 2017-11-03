@@ -3,7 +3,8 @@
 chruby 2.3.1
 
 # Build simulator app
-xcodebuild -project 'm2048.xcodeproj' \
+xcodebuild \
+	-project 'm2048.xcodeproj' \
 	-scheme $BUDDYBUILD_SCHEME \
 	-configuration 'Debug' \
 	-destination 'platform=iOS Simulator,OS=11.0,name=iPhone 7' \
@@ -14,18 +15,20 @@ xcodebuild -project 'm2048.xcodeproj' \
 	ONLY_ACTIVE_ARCH=YES \
 	DEBUG_INFORMATION_FORMAT=dwarf-with-dsym 
 
-echo '\n\n===Installing Appium===\n\n'
+echo $'\n\n===Installing Appium===\n\n'
+
 npm install -g appium
 
-echo '\n\n===Installing authorize-ios===\n\n'
+echo $'\n\n===Installing authorize-ios===\n\n'
+
 npm install -g authorize-ios
 sudo authorize-ios
 
-echo '\n\n===Installing rubygems===\n\n'
+echo $'\n\n===Installing rubygems===\n\n'
 bundle update
 #bundle install
 
-echo '\n\n===Running Appium in background process===\n\n'
+echo $'\n\n===Running Appium in background process===\n\n'
 nohup appium &
 echo $! > $BUDDYBUILD_WORKSPACE/appium_pid.txt
 
@@ -36,7 +39,7 @@ export APP_PATH='../../..'$BUDDYBUILD_PRODUCT_DIR'/Debug-iphonesimulator/m2048.a
 # Is there a better way to handle this?
 sleep 3
 
-echo '\n\n===Running Appium tests===\n'
+echo $'\n\n===Running Appium tests===\n'
 bundle exec ruby simple_test.rb
 
 # Cleanup Appium process
