@@ -3,17 +3,8 @@
 chruby 2.3.1
 
 # Build simulator app
-xcodebuild \
-	-project 'm2048.xcodeproj' \
-	-scheme $BUDDYBUILD_SCHEME \
-	-configuration 'Debug' \
-	-destination 'platform=iOS Simulator,OS=11.0,name=iPhone 7' \
-	CODE_SIGNING_REQUIRED=NO \
-	CODE_SIGN_IDENTITY='' \
-	CODE_SIGNING_ALLOWED=NO \
-	ENABLE_BITCODE=NO \
-	ONLY_ACTIVE_ARCH=YES \
-	DEBUG_INFORMATION_FORMAT=dwarf-with-dsym 
+xcodebuild -project 'm2048.xcodeproj' -scheme $BUDDYBUILD_SCHEME -configuration 'Debug' -destination 'platform=iOS Simulator,OS=11.0,name=iPhone 7' \
+	CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY='' CODE_SIGNING_ALLOWED=NO ENABLE_BITCODE=NO ONLY_ACTIVE_ARCH=YES DEBUG_INFORMATION_FORMAT=dwarf-with-dsym 
 
 echo $'\n\n===Installing Appium===\n\n'
 
@@ -37,7 +28,7 @@ export APP_PATH='../../..'$BUDDYBUILD_PRODUCT_DIR'/Debug-iphonesimulator/m2048.a
 
 # Let appium process begin before running tests
 # Is there a better way to handle this?
-sleep 3
+sleep 5
 
 echo $'\n\n===Running Appium tests===\n'
 bundle exec ruby simple_test.rb
