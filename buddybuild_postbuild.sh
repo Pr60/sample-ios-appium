@@ -36,7 +36,8 @@ echo 'Running appium in background task...'
 nohup appium &
 echo $! > $BUDDYBUILD_WORKSPACE/appium_pid.txt
 
-export APP_PATH=$BUDDYBUILD_PRODUCT_DIR
+export APP_PATH=$BUDDYBUILD_PRODUCT_DIR . '/m2048.app'
+echo $APP_PATH
 
 echo 'Running appium tests...'
 cd $BUDDYBUILD_WORKSPACE

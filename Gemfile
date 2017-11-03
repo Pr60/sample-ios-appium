@@ -2,4 +2,4 @@
 
 source "https://rubygems.org"
 
-gem "appium_lib"
+gem 'appium_lib',         '~> 9.7.4'
