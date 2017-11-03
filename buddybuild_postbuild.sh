@@ -19,21 +19,26 @@ chruby 2.4.1
 # fi
 
 # install appium
+echo 'Installing appium...'
 npm install -g appium
 
 # authorize for testing
+echo 'Installing authorize-ios...'
 npm install -g authorize-ios
 sudo authorize-ios
 
 # install rubygems
+echo 'Installing rubygems...'
 bundle install 
 
 # start appium in background
+echo 'Running appium in background task...'
 nohup appium &
 echo $! > $BUDDYBUILD_WORKSPACE/appium_pid.txt
 
 export APP_PATH=$BUDDYBUILD_PRODUCT_DIR
 
+echo 'Running appium tests...'
 cd $BUDDYBUILD_WORKSPACE
 bundle exec ruby simple_test.rb
 
