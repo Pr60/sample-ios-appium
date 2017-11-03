@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'appium_lib'
 
-app_path =  `echo $APP_PATH`
+app_path =  `echo $APP_PATH`.chomp
 
 desired_caps = {
   caps: {
