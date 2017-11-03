@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-chruby 2.4.1
+chruby 2.3.1
 
 # # install brew, ant, maven
 # if ! which brew >/dev/null; then
@@ -29,18 +29,18 @@ sudo authorize-ios
 
 # install rubygems
 echo 'Installing rubygems...'
-bundle install 
+bundle update
+bundle install
 
 # start appium in background
 echo 'Running appium in background task...'
 nohup appium &
 echo $! > $BUDDYBUILD_WORKSPACE/appium_pid.txt
 
-export APP_PATH=$BUDDYBUILD_PRODUCT_DIR . '/m2048.app'
-echo $APP_PATH
+# App path must be relative to $BUDDYBUILD_WORKSPACE
+export APP_PATH='../../..'$BUDDYBUILD_PRODUCT_DIR'/Debug-iphonesimulator/m2048.app'
 
 echo 'Running appium tests...'
-cd $BUDDYBUILD_WORKSPACE
 bundle exec ruby simple_test.rb
 
 # terminate 
