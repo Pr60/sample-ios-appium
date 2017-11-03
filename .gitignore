@@ -280,3 +280,6 @@ playground.xcworkspace
 /*.gcno
 
 # End of https://www.gitignore.io/api/osx,java,ruby,swift,xcode,intellij,objective-c
+
+### Custom ###
+.out
