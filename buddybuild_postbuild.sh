@@ -40,6 +40,9 @@ echo $! > $BUDDYBUILD_WORKSPACE/appium_pid.txt
 # App path must be relative to $BUDDYBUILD_WORKSPACE
 export APP_PATH='../../..'$BUDDYBUILD_PRODUCT_DIR'/Debug-iphonesimulator/m2048.app'
 
+# Let appium process begin before running tests
+sleep(3)
+
 echo 'Running appium tests...'
 bundle exec ruby simple_test.rb
 
