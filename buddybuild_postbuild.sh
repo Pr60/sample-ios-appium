@@ -2,38 +2,30 @@
 
 chruby 2.3.1
 
-# # install brew, ant, maven
-# if ! which brew >/dev/null; then
-# 	echo "Installing brew..."
-# 	ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-# fi
+# Build simulator app
+xcodebuild -project 'm2048.xcodeproj' \
+	-scheme $BUDDYBUILD_SCHEME \
+	-configuration 'Debug' \
+	-destination 'platform=iOS Simulator,OS=11.0,name=iPhone 7' \
+	CODE_SIGNING_REQUIRED=NO \
+	CODE_SIGN_IDENTITY='' \
+	CODE_SIGNING_ALLOWED=NO \
+	ENABLE_BITCODE=NO \
+	ONLY_ACTIVE_ARCH=YES \
+	DEBUG_INFORMATION_FORMAT=dwarf-with-dsym 
 
-# if ! which ant >/dev/null; then
-# 	echo "Installing ant..."
-# 	brew install ant
-# fi
-
-# if ! which maven >/dev/null; then
-# 	echo "Installing brew..."
-# 	brew install maven
-# fi
-
-# install appium
-echo 'Installing appium...'
+echo '\n\n===Installing Appium===\n\n'
 npm install -g appium
 
-# authorize for testing
-echo 'Installing authorize-ios...'
+echo '\n\n===Installing authorize-ios===\n\n'
 npm install -g authorize-ios
 sudo authorize-ios
 
-# install rubygems
-echo 'Installing rubygems...'
+echo '\n\n===Installing rubygems===\n\n'
 bundle update
-bundle install
+#bundle install
 
-# start appium in background
-echo 'Running appium in background task...'
+echo '\n\n===Running Appium in background process===\n\n'
 nohup appium &
 echo $! > $BUDDYBUILD_WORKSPACE/appium_pid.txt
 
@@ -41,12 +33,13 @@ echo $! > $BUDDYBUILD_WORKSPACE/appium_pid.txt
 export APP_PATH='../../..'$BUDDYBUILD_PRODUCT_DIR'/Debug-iphonesimulator/m2048.app'
 
 # Let appium process begin before running tests
-sleep 5
+# Is there a better way to handle this?
+sleep 3
 
-echo 'Running appium tests...'
+echo '\n\n===Running Appium tests===\n'
 bundle exec ruby simple_test.rb
 
-# terminate 
+# Cleanup Appium process
 jobs -l
 kill -9 `cat $BUDDYBUILD_WORKSPACE/appium_pid.txt`
 rm $BUDDYBUILD_WORKSPACE/appium_pid.txt
