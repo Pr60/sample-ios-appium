@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# Set up the custom reporting folders
+mkdir /tmp/sandbox/workspace/buddybuild_artifacts
+mkdir /tmp/sandbox/workspace/buddybuild_artifacts/Appium
+
 chruby 2.3.1
 
 # Build simulator app
@@ -16,7 +20,8 @@ npm install -g authorize-ios
 sudo authorize-ios
 
 echo $'\n\n===Installing rubygems===\n\n'
-bundle update
+gem install bundler
+bundle update	
 #bundle install
 
 echo $'\n\n===Running Appium in background process===\n\n'
@@ -37,5 +42,8 @@ bundle exec ruby simple_test.rb
 jobs -l
 kill -9 `cat $BUDDYBUILD_WORKSPACE/appium_pid.txt`
 rm $BUDDYBUILD_WORKSPACE/appium_pid.txt
+
+# Copy test results to buddybuild test reporting folder
+mv target/surefire-reports/*.xml /tmp/sandbox/workspace/buddybuild_artifacts/Appium
 
 exit 0
