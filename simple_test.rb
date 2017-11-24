@@ -11,6 +11,8 @@ desired_caps = {
     deviceName:    'iPhone 7',
     app:           app_path,
     automationName: 'XCUITest',
+    showXcodeLog: true,
+    wdaLocalPort: 8110,
   },
   appium_lib: {
     sauce_username:   nil, # don't run on Sauce
