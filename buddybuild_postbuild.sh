@@ -6,9 +6,11 @@ mkdir /tmp/sandbox/workspace/buddybuild_artifacts/Appium
 
 chruby 2.3.1
 
+SIMULATOR_APP_PATH='/sim_app'
+
 # Build simulator app
-xcodebuild -project "m2048.xcodeproj" -scheme $BUDDYBUILD_SCHEME -configuration "Debug" -destination "platform=iOS Simulator,OS=11.0,name=iPhone 7" \
-	CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" CODE_SIGNING_ALLOWED=NO ENABLE_BITCODE=NO ONLY_ACTIVE_ARCH=YES DEBUG_INFORMATION_FORMAT=dwarf-with-dsym 
+xcodebuild -project "m2048.xcodeproj" -scheme $BUDDYBUILD_SCHEME -configuration "Debug" -destination "platform=iOS Simulator,OS=11.0,name=iPhone 7" -derivedDataPath $BUDDYBUILD_WORKSPACE$SIMULATOR_APP_PATH \
+	CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" CODE_SIGNING_ALLOWED=NO ENABLE_BITCODE=NO ONLY_ACTIVE_ARCH=YES DEBUG_INFORMATION_FORMAT=dwarf-with-dsym
 
 echo $'\n\n===Installing Appium===\n\n'
 
@@ -29,7 +31,7 @@ nohup appium &
 echo $! > $BUDDYBUILD_WORKSPACE/appium_pid.txt
 
 # App path must be relative to $BUDDYBUILD_WORKSPACE
-export APP_PATH='../../..'$BUDDYBUILD_PRODUCT_DIR'/Debug-iphonesimulator/m2048.app'
+export APP_PATH=$SIMUILATOR_APP_PATH'/Build/Products/Debug-iphonesimulator/m2048.app'
 
 # Let appium process begin before running tests
 # Is there a better way to handle this?
