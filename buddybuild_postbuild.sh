@@ -7,8 +7,8 @@ mkdir /tmp/sandbox/workspace/buddybuild_artifacts/Appium
 chruby 2.3.1
 
 # Build simulator app
-xcodebuild -project 'm2048.xcodeproj' -scheme $BUDDYBUILD_SCHEME -configuration 'Debug' -destination 'platform=iOS Simulator,OS=11.0,name=iPhone 7' \
-	CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY='' CODE_SIGNING_ALLOWED=NO ENABLE_BITCODE=NO ONLY_ACTIVE_ARCH=YES DEBUG_INFORMATION_FORMAT=dwarf-with-dsym 
+xcodebuild -project "m2048.xcodeproj" -scheme $BUDDYBUILD_SCHEME -configuration "Debug" -destination "platform=iOS Simulator,OS=11.0,name=iPhone 7" \
+	CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" CODE_SIGNING_ALLOWED=NO ENABLE_BITCODE=NO ONLY_ACTIVE_ARCH=YES DEBUG_INFORMATION_FORMAT=dwarf-with-dsym 
 
 echo $'\n\n===Installing Appium===\n\n'
 
