@@ -49,7 +49,7 @@ export APP_PATH=$SIMULATOR_APP_PATH'/Build/Products/Debug-iphonesimulator/m2048.
 sleep 5
 
 echo $'===Running Appium tests==='
-bundle exec rspec simple_test.rb --out $TEST_RESULT_DIR
+bundle exec rspec --format xml --out $TEST_RESULT_DIR'/results.xml' simple_test.rb 
 
 # Cleanup Appium process
 # jobs -l
