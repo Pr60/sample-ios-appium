@@ -2,6 +2,10 @@
 
 chruby 2.3.1
 
+# Set up the test reporting folder
+TEST_RESULT_DIR=$BUDDYBUILD_WORKSPACE/buddybuild_artifacts/Appium
+mkdir -p $TEST_RESULT_DIR
+
 echo $'===Building App for Simulator==='
 
 SIMULATOR_APP_PATH=$BUDDYBUILD_WORKSPACE'/sim_app'
@@ -45,16 +49,12 @@ export APP_PATH=$SIMULATOR_APP_PATH'/Build/Products/Debug-iphonesimulator/m2048.
 sleep 5
 
 echo $'===Running Appium tests==='
-bundle exec rspec simple_test.rb
+bundle exec rspec simple_test.rb --out $TEST_RESULT_DIR
 
 # Cleanup Appium process
-jobs -l
+# jobs -l
 kill -9 `cat $BUDDYBUILD_WORKSPACE/appium_pid.txt`
 rm $BUDDYBUILD_WORKSPACE/appium_pid.txt
-
-# Set up the test reporting folder
-TEST_RESULT_DIR=$BUDDYBUILD_WORKSPACE/buddybuild_artifacts/Appium
-mkdir -p $TEST_RESULT_DIR
 
 # Copy test results to test reporting folder
 # mv target/surefire-reports/*.xml $TEST_RESULT_DIR
