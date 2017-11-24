@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
 
-# Set up the custom reporting folders
-mkdir /tmp/sandbox/workspace/buddybuild_artifacts
-mkdir /tmp/sandbox/workspace/buddybuild_artifacts/Appium
-
 chruby 2.3.1
+
+echo $'===Building App for Simulator==='
 
 SIMULATOR_APP_PATH=$BUDDYBUILD_WORKSPACE'/sim_app'
 
@@ -21,21 +19,21 @@ xcodebuild -project "m2048.xcodeproj" \
 	ONLY_ACTIVE_ARCH=YES \
 	DEBUG_INFORMATION_FORMAT=dwarf-with-dsym
 
-echo $'\n\n===Installing Appium===\n\n'
+echo $'===Installing Appium==='
 
 npm install -g appium
 
-echo $'\n\n===Installing authorize-ios===\n\n'
+echo $'===Installing authorize-ios==='
 
 npm install -g authorize-ios
 sudo authorize-ios
 
-echo $'\n\n===Installing rubygems===\n\n'
+echo $'===Installing rubygems==='
 gem install bundler
 bundle update	
 #bundle install
 
-echo $'\n\n===Running Appium in background process===\n\n'
+echo $'===Running Appium in background process==='
 nohup appium &
 echo $! > $BUDDYBUILD_WORKSPACE/appium_pid.txt
 
@@ -46,15 +44,19 @@ export APP_PATH=$SIMULATOR_APP_PATH'/Build/Products/Debug-iphonesimulator/m2048.
 # Is there a better way to handle this?
 sleep 5
 
-echo $'\n\n===Running Appium tests===\n'
-bundle exec ruby simple_test.rb
+echo $'===Running Appium tests==='
+bundle exec rspec simple_test.rb
 
 # Cleanup Appium process
 jobs -l
 kill -9 `cat $BUDDYBUILD_WORKSPACE/appium_pid.txt`
 rm $BUDDYBUILD_WORKSPACE/appium_pid.txt
 
-# Copy test results to buddybuild test reporting folder
-mv target/surefire-reports/*.xml /tmp/sandbox/workspace/buddybuild_artifacts/Appium
+# Set up the test reporting folder
+TEST_RESULT_DIR=$BUDDYBUILD_WORKSPACE/buddybuild_artifacts/Appium
+mkdir -p $TEST_RESULT_DIR
+
+# Copy test results to test reporting folder
+# mv target/surefire-reports/*.xml $TEST_RESULT_DIR
 
 exit 0
