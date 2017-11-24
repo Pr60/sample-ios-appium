@@ -6,7 +6,7 @@ mkdir /tmp/sandbox/workspace/buddybuild_artifacts/Appium
 
 chruby 2.3.1
 
-SIMULATOR_APP_PATH='/sim_app'
+SIMULATOR_APP_PATH=$BUDDYBUILD_WORKSPACE'/sim_app'
 
 # Build simulator app
 xcodebuild -project "m2048.xcodeproj" -scheme $BUDDYBUILD_SCHEME -configuration "Debug" -destination "platform=iOS Simulator,OS=11.0,name=iPhone 7" -derivedDataPath $BUDDYBUILD_WORKSPACE$SIMULATOR_APP_PATH \
