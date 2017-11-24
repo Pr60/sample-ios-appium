@@ -31,7 +31,7 @@ nohup appium &
 echo $! > $BUDDYBUILD_WORKSPACE/appium_pid.txt
 
 # App path must be relative to $BUDDYBUILD_WORKSPACE
-export APP_PATH=$SIMUILATOR_APP_PATH'/Build/Products/Debug-iphonesimulator/m2048.app'
+export APP_PATH=$SIMULATOR_APP_PATH'/Build/Products/Debug-iphonesimulator/m2048.app'
 
 # Let appium process begin before running tests
 # Is there a better way to handle this?
