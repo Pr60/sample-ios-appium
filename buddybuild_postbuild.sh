@@ -9,8 +9,17 @@ chruby 2.3.1
 SIMULATOR_APP_PATH=$BUDDYBUILD_WORKSPACE'/sim_app'
 
 # Build simulator app
-xcodebuild -project "m2048.xcodeproj" -scheme $BUDDYBUILD_SCHEME -configuration "Debug" -destination "platform=iOS Simulator,OS=11.0,name=iPhone 7" -derivedDataPath $BUDDYBUILD_WORKSPACE$SIMULATOR_APP_PATH \
-	CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" CODE_SIGNING_ALLOWED=NO ENABLE_BITCODE=NO ONLY_ACTIVE_ARCH=YES DEBUG_INFORMATION_FORMAT=dwarf-with-dsym
+xcodebuild -project "m2048.xcodeproj" \
+    -scheme $BUDDYBUILD_SCHEME \
+    -configuration "Debug" \
+    -destination "platform=iOS Simulator,OS=11.0,name=iPhone 7" \
+    -derivedDataPath $SIMULATOR_APP_PATH \
+	CODE_SIGNING_REQUIRED=NO \
+	CODE_SIGN_IDENTITY="" \
+	CODE_SIGNING_ALLOWED=NO \
+	ENABLE_BITCODE=NO \
+	ONLY_ACTIVE_ARCH=YES \
+	DEBUG_INFORMATION_FORMAT=dwarf-with-dsym
 
 echo $'\n\n===Installing Appium===\n\n'
 
