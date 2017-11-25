@@ -2,9 +2,9 @@ require 'rubygems'
 require 'appium_lib'
 require 'rspec'
 
-RSpec.configure do |c|
-  c.treat_symbols_as_metadata_keys_with_true_values = true
-end
+# RSpec.configure do |c|
+#   c.treat_symbols_as_metadata_keys_with_true_values = true
+# end
 
 # Retrieve the APP_PATH env var
 app_path =  `echo $APP_PATH`.chomp
@@ -65,22 +65,3 @@ describe 'M2ViewController' do
     end
   end
 end
-
-# # Start the driver
-# Appium::Driver.new(desired_caps, true).start_driver
-
-# module TwentyFourtyEight
-#   module IOS
-#     # Add all the Appium library methods to Test to make
-#     # calling them look nicer.
-#     Appium.promote_singleton_appium_methods TwentyFourtyEight
-
-#     # Click the first button
-#     button(1).click
-
-#     # Quit when you're done!
-#     driver_quit
-#     puts 'Tests Succeeded!'
-#   end
-# end
-

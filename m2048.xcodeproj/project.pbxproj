@@ -19,8 +19,6 @@
 		2443DC7C18D662CA00C920C1 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2443DC7B18D662CA00C920C1 /* XCTest.framework */; };
 		2443DC7D18D662CA00C920C1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2443DC5518D662CA00C920C1 /* Foundation.framework */; };
 		2443DC7E18D662CA00C920C1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2443DC5918D662CA00C920C1 /* UIKit.framework */; };
-		2443DC8618D662CA00C920C1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2443DC8418D662CA00C920C1 /* InfoPlist.strings */; };
-		2443DC8818D662CA00C920C1 /* m2048Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2443DC8718D662CA00C920C1 /* m2048Tests.m */; };
 		2443DC9A18D663FC00C920C1 /* M2Scene.m in Sources */ = {isa = PBXBuildFile; fileRef = 2443DC9618D663FC00C920C1 /* M2Scene.m */; };
 		2443DC9B18D663FC00C920C1 /* M2GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2443DC9918D663FC00C920C1 /* M2GameManager.m */; };
 		2443DCA018D6647000C920C1 /* M2SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2443DC9F18D6647000C920C1 /* M2SettingsViewController.m */; };
@@ -62,9 +60,6 @@
 		2443DC7418D662CA00C920C1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2443DC7A18D662CA00C920C1 /* m2048Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = m2048Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2443DC7B18D662CA00C920C1 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		2443DC8318D662CA00C920C1 /* m2048Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "m2048Tests-Info.plist"; sourceTree = "<group>"; };
-		2443DC8518D662CA00C920C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		2443DC8718D662CA00C920C1 /* m2048Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = m2048Tests.m; sourceTree = "<group>"; };
 		2443DC9518D663FC00C920C1 /* M2Scene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M2Scene.h; sourceTree = "<group>"; };
 		2443DC9618D663FC00C920C1 /* M2Scene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M2Scene.m; sourceTree = "<group>"; };
 		2443DC9818D663FC00C920C1 /* M2GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M2GameManager.h; sourceTree = "<group>"; };
@@ -123,7 +118,6 @@
 			isa = PBXGroup;
 			children = (
 				2443DC5D18D662CA00C920C1 /* m2048 */,
-				2443DC8118D662CA00C920C1 /* m2048Tests */,
 				2443DC5418D662CA00C920C1 /* Frameworks */,
 				2443DC5318D662CA00C920C1 /* Products */,
 			);
@@ -175,24 +169,6 @@
 				2443DC6018D662CA00C920C1 /* InfoPlist.strings */,
 				2443DC6318D662CA00C920C1 /* main.m */,
 				2443DC6518D662CA00C920C1 /* m2048-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		2443DC8118D662CA00C920C1 /* m2048Tests */ = {
-			isa = PBXGroup;
-			children = (
-				2443DC8718D662CA00C920C1 /* m2048Tests.m */,
-				2443DC8218D662CA00C920C1 /* Supporting Files */,
-			);
-			path = m2048Tests;
-			sourceTree = "<group>";
-		};
-		2443DC8218D662CA00C920C1 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				2443DC8318D662CA00C920C1 /* m2048Tests-Info.plist */,
-				2443DC8418D662CA00C920C1 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -356,7 +332,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2443DC8618D662CA00C920C1 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,7 +364,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2443DC8818D662CA00C920C1 /* m2048Tests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,14 +392,6 @@
 				2443DC6A18D662CA00C920C1 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		2443DC8418D662CA00C920C1 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2443DC8518D662CA00C920C1 /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
