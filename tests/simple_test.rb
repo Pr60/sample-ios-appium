@@ -2,10 +2,6 @@ require 'rubygems'
 require 'appium_lib'
 require 'rspec'
 
-# RSpec.configure do |c|
-#   c.treat_symbols_as_metadata_keys_with_true_values = true
-# end
-
 # Retrieve the APP_PATH env var
 app_path =  `echo $APP_PATH`.chomp
 
@@ -41,7 +37,7 @@ describe 'M2ViewController' do
     driver_quit
   end
 
-  describe '.settings', :one do
+  describe 'Settings', :one do
     subject { find_elements(:class_name, 'UIAButton')[0] }
 
     it { should_not be nil }
