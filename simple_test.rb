@@ -42,26 +42,14 @@ describe 'M2ViewController' do
   end
 
   describe '.settings', :one do
-    subject { find_elements(:class_name, 'UIATableView')[0] }
+    subject { find_elements(:class_name, 'UIAButton')[0] }
 
     it { should_not be nil }
 
-    context 'when used as a selection context' do
-      it 'Can be a selection context' do
-        rows = subject.find_elements(:class_name, 'UIATableCell')
-        rows.size.should eq 12
+    context 'when playing the game' do
+      it 'can access the settings' do
+        subject.click()
       end
-
-      it 'does not return elements it does not contain' do
-        nav_bar = subject.find_elements(:class_name, 'UIANavigationBar')
-        nav_bar.length.should be 0
-      end
-    end
-
-    it 'returns its text' do
-      rows = subject.find_elements(:class_name, 'UIATableCell')
-      # rows.first.name.should eq 'Buttons, Various uses of UIButton'
-      rows.first.name.should eq 'Buttons'
     end
   end
 end
