@@ -54,7 +54,7 @@ echo $'=== Running Appium tests ==='
 bundle exec rspec \
 	--format RspecJunitFormatter \
 	--out $TEST_RESULT_DIR'/results.xml' \
-	simple_test.rb 
+	./tests/simple_test.rb 
 
 # Cleanup Appium process
 # jobs -l
