@@ -33,11 +33,12 @@ npm install -g authorize-ios
 sudo authorize-ios
 
 echo $'=== Installing rubygems ==='
+
 gem install bundler
-bundle update	
-#bundle install
+bundle update
 
 echo $'=== Running Appium in background process ==='
+# Create 
 nohup appium &
 echo $! > $BUDDYBUILD_WORKSPACE/appium_pid.txt
 
@@ -45,11 +46,15 @@ echo $! > $BUDDYBUILD_WORKSPACE/appium_pid.txt
 export APP_PATH=$SIMULATOR_APP_PATH'/Build/Products/Debug-iphonesimulator/m2048.app'
 
 # Let appium process begin before running tests
-# Is there a better way to handle this?
 sleep 5
 
 echo $'=== Running Appium tests ==='
-bundle exec rspec --format RspecJunitFormatter --out $TEST_RESULT_DIR'/results.xml' simple_test.rb 
+
+# Test results must be in XCTest or JUnit formater to be properly parsed by buddybuild
+bundle exec rspec \
+	--format RspecJunitFormatter \
+	--out $TEST_RESULT_DIR'/results.xml' \
+	simple_test.rb 
 
 # Cleanup Appium process
 # jobs -l
