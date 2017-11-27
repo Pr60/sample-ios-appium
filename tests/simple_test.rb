@@ -52,10 +52,4 @@ describe 'M2ViewController' do
       end
     end
   end
-
-  describe '.table' do
-    subject { find_elements(:class_name, 'UIATableView')[0] }
-
-    it { should_not be nil }
-  end
 end
